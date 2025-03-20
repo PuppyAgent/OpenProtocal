@@ -1,16 +1,45 @@
 # OpenProtocal
 
-A flexible protocol adaptation utility that supports multiple LLM-friendly protocols and deployment frameworks, with initial support for MCP and FastAPI.
+## Vision
+
+OpenProtocal aims to bridge the gap between different LLM protocols and deployment frameworks, making it easier for developers to maintain applications and upgrade to AI friendly. Our vision is to create a unified, extensible protocol adaptor that supports:
+
+<details>
+<summary>All AI protocols supports</summary>
+
+- Support for all AI interface protocols and forward auto-upgrading
+- Compatible for clis-native authentication mechanism
+</details>
+
+<details>
+<summary>Seamless integration to living endpoints</summary>
+
+- Fast and elegant intergration
+- Zero-downtime integration with existing services
+- Plug-and-play endpoint configuration
+- Automatic error adapting and retry mechanisms
+- Automatic schema validation and correction
+- Automated protocol switching implicitly as responding
+</details>
+
+<details>
+<summary>Cross-framework Cross-languages compatibility</summary>
+
+- Language-agnostic implementation
+- Deploy Framework independent design without AST changes
+- Consistent API experience across ternimal types
+- Map-reducable data structures for minitoring and natural language summarization
+</details>
 
 ## Installation
 
 ```bash
-pip install openprotocal
+pip install openprotocol
 ```
 
 ## Quick Start
 
-```python
+```pythoo
 from fastapi import FastAPI
 from protocals.mcp import mcp
 

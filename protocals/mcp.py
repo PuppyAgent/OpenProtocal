@@ -4,22 +4,41 @@ from fastapi import FastAPI, Request, APIRouter, HTTPException
 from pydantic import BaseModel
 import inspect
 
-class JsonRpcRequest(BaseModel):
-    jsonrpc: str
-    method: str
-    params: Dict[str, Any] = {}
-    id: Any
+class MCP(JSONRPC):
+    def __init__(self):
+        
+        super().__init__()
+        self.router = APIRouter(prefix="/mcp", tags=["mcp"])
 
-class JsonRpcError(BaseModel):
-    code: int
-    message: str
-    data: Optional[Any] = None
+    @property
+    def request(self):
 
-class JsonRpcResponse(BaseModel):
-    jsonrpc: str = "2.0"
-    result: Optional[Any] = None
-    error: Optional[JsonRpcError] = None
-    id: Optional[Any] = None
+        class JsonRpcRequest(BaseModel):
+            jsonrpc: str
+            method: str
+            params: Dict[str, Any] = {}
+            id: Any
+
+        return JsonRpcRequest
+
+    
+    @property
+    def error(self):
+        class JsonRpcError(BaseModel):
+            code: int
+            message: str
+            data: Optional[Any] = None
+        return JsonRpcError
+
+    @property
+    def response(self):
+        class JsonRpcResponse(BaseModel):
+            jsonrpc: str = "2.0"
+            result: Optional[Any] = None
+            error: Optional[self.error] = None
+            id: Optional[Any] = None
+        return JsonRpcResponse
+
 
 # 存储所有注册的方法
 registered_methods: Dict[str, Callable] = {}

@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 
 setup(
-    name="openprotocal",
+    name="openprotocol",
     version="0.1.0",
-    description="Open Protocal to adapt different protocols and deploy frameworks",
+    description="Open Protocol for AI friendly",
     long_description=open("README.md").read(),
     long_description_content_type="text/markdown",
     author="JZ",
     author_email="zjlpaul@gmail.com",
-    url="https://github.com/puppyagent/openprotocal",
+    url="https://github.com/puppyagent/openprotocol",
     packages=find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
