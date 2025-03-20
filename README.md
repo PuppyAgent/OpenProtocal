@@ -2,7 +2,7 @@
 
 ## Vision
 
-OpenProtocal aims to bridge the gap between different LLM protocols and deployment frameworks, making it easier for developers to maintain applications and upgrade to AI friendly. Our vision is to create a unified, extensible protocol adaptor that supports:
+OpenProtocal is a genetic wheel, aims to bridge the gap between different LLM protocols and deployment frameworks, making it easier for developers to maintain applications and upgrade to AI friendly. Our vision is to create a unified, extensible protocol adaptor that supports:
 
 <details>
 <summary>All AI protocols supports</summary>
