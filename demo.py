@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Request
 from pydantic import BaseModel
 from typing import List, Optional
 import uvicorn
-from protocals.mcp import mcp
+from protocals.op import op
 
 app = FastAPI(
     title="示例 API",
@@ -16,29 +16,29 @@ class UserQuery(BaseModel):
     city: str
     active: Optional[bool] = True
 
-# 1. 只有路径参数的接口
+# 1. 使用默认FastAPI框架的接口
 @app.post("/users/{user_id}/orders/{order_id}")
-@mcp("getOrderDetail")
+@op("mcp", "getOrderDetail", web_framework="fastapi")
 async def get_order_detail(
     request: Request,
     user_id: int,
     order_id: str
 ):
-    """示例：只使用路径参数的接口"""
+    """示例：使用默认FastAPI框架的接口"""
     return {
         "user_id": user_id,
         "order_id": order_id,
         "status": "completed"
     }
 
-# 2. 只有请求参数的接口
+# 2. 使用自定义Web框架的接口
 @app.post("/users/search")
-@mcp("searchUsers")
+@op("mcp", "searchUsers", web_framework="fastapi")
 async def search_users(
     request: Request,
     query: UserQuery
 ):
-    """示例：只使用请求体参数的接口"""
+    """示例：使用自定义Web框架的接口"""
     return {
         "users": [
             {
@@ -52,7 +52,7 @@ async def search_users(
 
 # 3. 混合参数的接口
 @app.post("/users/{user_id}/profile")
-@mcp("updateProfile")
+@op("mcp", "updateProfile", web_framework="fastapi")
 async def update_profile(
     request: Request,
     user_id: int,
