@@ -39,28 +39,30 @@ pip install openprotocol
 
 ## Quick Start
 
-```pythoo
+```python
 from fastapi import FastAPI
-from protocals.mcp import mcp
+from protocals.op import op
 
 app = FastAPI()
 
 @app.get("/hello")
-@mcp(hello)
+@op(protocol_type="mcp", web_framework="fastapi")
 async def hello(request, name: str = "World"):
     return f"Hello, {name}!"
 
-# MCP routes will be automatically registered to the FastAPI application
+# Protocol routes will be automatically registered to the FastAPI application
 ```
 
 ## Features
 
-- JSON-RPC 2.0 specification compliant MCP implementation
-- Automatic route registration with FastAPI integration
-- Comprehensive exception handling
+- Generic protocol adapter with support for multiple protocols
+- Automatic request parsing and error handling
+- Framework-agnostic design
 - Full type hint support
 - Flexible protocol adaptation framework
 - Support for multiple deployment frameworks
+- Automatic error response formatting
+- Request body validation and parsing
 
 ## Example
 
@@ -69,6 +71,7 @@ Check out `demo.py` for a complete example showing:
 - Request body validation with Pydantic models
 - Mixed parameter types support
 - Error handling
+- Protocol-specific request processing
 
 ## Requirements
 

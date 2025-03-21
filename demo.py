@@ -18,7 +18,7 @@ class UserQuery(BaseModel):
 
 # 1. 使用默认FastAPI框架的接口
 @app.post("/users/{user_id}/orders/{order_id}")
-@op("mcp", "getOrderDetail", web_framework="fastapi")
+@op(protocol_type="mcp", web_framework="fastapi")
 async def get_order_detail(
     request: Request,
     user_id: int,
@@ -33,7 +33,7 @@ async def get_order_detail(
 
 # 2. 使用自定义Web框架的接口
 @app.post("/users/search")
-@op("mcp", "searchUsers", web_framework="fastapi")
+@op(protocol_type="mcp", web_framework="fastapi")
 async def search_users(
     request: Request,
     query: UserQuery
@@ -52,7 +52,7 @@ async def search_users(
 
 # 3. 混合参数的接口
 @app.post("/users/{user_id}/profile")
-@op("mcp", "updateProfile", web_framework="fastapi")
+@op(protocol_type="mcp", web_framework="fastapi")
 async def update_profile(
     request: Request,
     user_id: int,
