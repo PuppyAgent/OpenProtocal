@@ -14,7 +14,7 @@ OpenProtocal is a genetic wheel, aims to bridge the gap between different LLM pr
 <details>
 <summary>Seamless integration to living endpoints</summary>
 
-- Fast and elegant intergration
+- Fast, elegant and Non-invasive intergration
 - Zero-downtime integration with existing services
 - Plug-and-play endpoint configuration
 - Automatic error adapting and retry mechanisms
